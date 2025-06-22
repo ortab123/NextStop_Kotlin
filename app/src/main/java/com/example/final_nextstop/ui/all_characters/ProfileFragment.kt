@@ -27,6 +27,9 @@ class ProfileFragment : Fragment() {
     private var _binding: ProfileLayoutBinding? = null
     private val binding get() = _binding!!
     private val viewModel: PostsViewModel by activityViewModels()
+    private lateinit var adapter: PostAdapter
+
+
 
     private val pickImageLauncher: ActivityResultLauncher<String> =
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
@@ -58,11 +61,9 @@ class ProfileFragment : Fragment() {
                 .into(binding.imgMyProfile)
         }
 
-        viewModel.posts?.observe(viewLifecycleOwner) {
-            val sortedPosts = it.sortedByDescending { post -> post.date }
-            binding.recyclerPosts.adapter = PostAdapter(sortedPosts, object : PostAdapter.PostListener {
+                adapter = PostAdapter(object : PostAdapter.PostListener {
                 override fun onPostClicked(index: Int) {
-                    val post = (binding.recyclerPosts.adapter as PostAdapter).postAt(index)
+                    val post = adapter.postAt(index)
                     val action = ProfileFragmentDirections
                         .actionProfileFragmentToDescriptionFragment(source = "profile")
                     viewModel.setPost(post)
@@ -70,7 +71,13 @@ class ProfileFragment : Fragment() {
 
                 }
             })
+            binding.recyclerPosts.adapter = adapter
             binding.recyclerPosts.layoutManager = LinearLayoutManager(requireContext())
+
+
+        viewModel.posts?.observe(viewLifecycleOwner) {
+            val sortedPosts = it.sortedByDescending { post -> post.date }
+            adapter.setPosts(sortedPosts)
 
             val updatedProfileUri = viewModel.posts?.value?.firstOrNull()?.profileImageUri
             if (!updatedProfileUri.isNullOrBlank()) {

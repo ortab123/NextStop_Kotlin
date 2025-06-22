@@ -1,4 +1,4 @@
-package com.example.final_nextstop.ui.all_posts
+package com.example.final_nextstop.ui.all_characters
 
 import android.app.Activity.RESULT_OK
 import android.content.Intent

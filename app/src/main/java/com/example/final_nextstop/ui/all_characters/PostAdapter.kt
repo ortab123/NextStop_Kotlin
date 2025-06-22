@@ -10,7 +10,15 @@ import com.example.final_nextstop.databinding.PostLayoutBinding
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class PostAdapter(val posts:List<Post>, val callback: PostListener) : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
+class PostAdapter(val callback: PostListener) : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
+
+    private val posts = ArrayList<Post>()
+
+    fun setPosts(newPosts: Collection<Post>){
+        this.posts.clear()
+        this.posts.addAll(newPosts)
+        notifyDataSetChanged()
+    }
 
     interface PostListener {
         fun onPostClicked(index:Int)

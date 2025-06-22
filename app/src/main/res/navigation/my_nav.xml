@@ -116,7 +116,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.final_nextstop.ui.all_posts.HomeFragment"
+        android:name="com.example.final_nextstop.ui.all_characters.HomeFragment"
         android:label="home_page_layout"
         tools:layout="@layout/home_page_layout" >
         <action
