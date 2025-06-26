@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.final_nextstop.databinding.LoginLayoutBinding
+import dagger.hilt.android.AndroidEntryPoint
 import il.co.syntax.fullarchitectureretrofithiltkotlin.utils.autoCleared
 
+@AndroidEntryPoint
 class LoginFragment : Fragment() {
     private var binding: LoginLayoutBinding by autoCleared()
 //    private var binding get() = _binding!!

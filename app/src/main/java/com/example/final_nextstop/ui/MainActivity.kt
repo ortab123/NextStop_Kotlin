@@ -10,7 +10,9 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.example.final_nextstop.R
 import com.example.final_nextstop.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
 
@@ -29,12 +31,6 @@ class MainActivity : AppCompatActivity() {
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
 
-        // ניווט לפי לחיצה על כפתורי התפריט התחתון
-//        binding.profileButton.setOnClickListener {
-//            navController.navigate(R.id.profileFragment)
-//        }
-
-
 
         binding.profileButton.setOnClickListener {
             navController.navigate(R.id.profileFragment)
@@ -48,8 +44,5 @@ class MainActivity : AppCompatActivity() {
             navController.navigate(R.id.homeFragment, null, navOptions)
         }
 
-//        binding.mapButton.setOnClickListener {
-//            navController.navigate(R.id.mapFragment)
-//        }
     }
 }

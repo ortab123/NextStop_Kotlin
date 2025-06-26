@@ -8,6 +8,10 @@ firebaseBom = "33.15.0"
 githubGlide = "4.12.0"
 githubTedimagepicker = "1.2.8"
 glide = "4.16.0"
+googleHiltAndroid = "2.44"
+hiltAndroid = "2.51.1"
+hiltCompiler = "2.51.1"
+hiltCompilerVersion = "2.44"
 imagepicker = "2.1"
 imagepickerVersion = "2.1"
 kotlin = "2.0.21"
@@ -45,6 +49,10 @@ firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "fir
 github-glide-v4120 = { module = "com.github.bumptech.glide:glide", version.ref = "githubGlide" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 glide-compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "compilerVersion" }
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
+hilt-android-v244 = { module = "com.google.dagger:hilt-android", version.ref = "googleHiltAndroid" }
+hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltCompiler" }
+hilt-compiler-v244 = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltCompilerVersion" }
 imagepicker = { module = "com.github.dhaval2404:imagepicker", version.ref = "imagepicker" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -64,4 +72,5 @@ tedimagepicker-v128 = { module = "io.github.ParkSangGwon:tedimagepicker", versio
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+
 

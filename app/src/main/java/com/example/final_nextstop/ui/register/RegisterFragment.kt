@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.final_nextstop.databinding.LoginLayoutBinding
 import com.example.final_nextstop.databinding.RegisterLayoutBinding
+import dagger.hilt.android.AndroidEntryPoint
 import il.co.syntax.fullarchitectureretrofithiltkotlin.utils.autoCleared
 
+@AndroidEntryPoint
 class RegisterFragment : Fragment() {
     private var binding: RegisterLayoutBinding by autoCleared()
     //private var binding get() = _binding!!

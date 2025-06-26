@@ -16,10 +16,15 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.final_nextstop.R
+import com.example.final_nextstop.data.local_db.PostDao
 import com.example.final_nextstop.databinding.HomePageLayoutBinding
 import com.example.final_nextstop.ui.PostsViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class HomeFragment : Fragment(){
+
 
     private var _binding: HomePageLayoutBinding? = null
     private val binding get() = _binding!!
@@ -73,6 +78,4 @@ class HomeFragment : Fragment(){
         _binding = null
 
     }
-
-
 }

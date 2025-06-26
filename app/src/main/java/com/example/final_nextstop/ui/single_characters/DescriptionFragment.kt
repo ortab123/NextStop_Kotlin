@@ -12,10 +12,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.final_nextstop.R
 import com.example.final_nextstop.databinding.DescriptionLayoutBinding
 import com.example.final_nextstop.ui.PostsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
+@AndroidEntryPoint
 class DescriptionFragment : Fragment() {
     private var _binding : DescriptionLayoutBinding? = null
 

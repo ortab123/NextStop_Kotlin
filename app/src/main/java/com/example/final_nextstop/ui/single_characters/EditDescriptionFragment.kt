@@ -17,10 +17,12 @@ import com.example.final_nextstop.R
 import com.example.final_nextstop.data.model.Post
 import com.example.final_nextstop.databinding.EditDescriptionLayoutBinding
 import com.example.final_nextstop.ui.PostsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
+@AndroidEntryPoint
 class EditDescriptionFragment : Fragment() {
     private var _binding : EditDescriptionLayoutBinding? = null
 

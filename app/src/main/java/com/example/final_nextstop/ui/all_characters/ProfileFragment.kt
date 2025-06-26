@@ -20,15 +20,16 @@ import com.example.final_nextstop.R
 import com.example.final_nextstop.databinding.ProfileLayoutBinding
 import com.example.final_nextstop.ui.PostsViewModel
 import android.view.animation.AnimationUtils
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class ProfileFragment : Fragment() {
 
     private var _binding: ProfileLayoutBinding? = null
     private val binding get() = _binding!!
     private val viewModel: PostsViewModel by activityViewModels()
     private lateinit var adapter: PostAdapter
-
 
 
     private val pickImageLauncher: ActivityResultLauncher<String> =

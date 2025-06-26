@@ -10,8 +10,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.final_nextstop.databinding.HomePageLayoutBinding
 import com.example.final_nextstop.databinding.SettingsLayoutBinding
 import com.example.final_nextstop.R
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class SettingsFragment : Fragment (){
     private var _binding: SettingsLayoutBinding? = null
     private val binding get() = _binding!!

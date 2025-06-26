@@ -12,10 +12,10 @@ import com.example.final_nextstop.data.model.PostImage
 import com.example.final_nextstop.R
 import com.example.final_nextstop.databinding.GalleryLayoutBinding
 import com.example.final_nextstop.ui.PostsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class GalleryFragment : Fragment() {
-
 
     private var _binding : GalleryLayoutBinding? = null
 

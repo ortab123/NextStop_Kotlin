@@ -8,7 +8,8 @@ import com.bumptech.glide.Glide
 import com.example.final_nextstop.data.model.PostImage
 import com.example.final_nextstop.databinding.ImageInGalleryLayoutBinding
 
-    class GalleryImageAdapter(private val images: List<PostImage>, private val onClick: (PostImage) -> Unit
+    class GalleryImageAdapter(private val images: List<PostImage>,
+                              private val onClick: (PostImage) -> Unit
 ) : RecyclerView.Adapter<GalleryImageAdapter.ImageViewHolder>() {
 
 

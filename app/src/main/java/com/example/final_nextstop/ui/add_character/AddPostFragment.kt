@@ -19,8 +19,10 @@ import com.example.final_nextstop.data.model.Post
 import com.example.final_nextstop.databinding.AddPostLayoutBinding
 import com.example.final_nextstop.ui.PostsViewModel
 import com.example.final_nextstop.ui.all_characters.ImagesAdapter
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
+@AndroidEntryPoint
 class AddPostFragment : Fragment() {
 
     private var _binding: AddPostLayoutBinding? = null
@@ -61,42 +63,6 @@ class AddPostFragment : Fragment() {
         }
     }
 
-
-
-
-//    private val pickImagesLauncher: ActivityResultLauncher<Array<String>> =
-//        registerForActivityResult(ActivityResultContracts.OpenMultipleDocuments()) { uris ->
-//            if (!uris.isNullOrEmpty()) {
-//                viewModel.setImageUris(uris)
-//                binding.resultImage.setImageURI(uris[0])
-//
-//                uris.forEach {
-//                    requireActivity().contentResolver.takePersistableUriPermission(
-//                        it,
-//                        Intent.FLAG_GRANT_READ_URI_PERMISSION
-//                    )
-//                }
-//            }
-//        }
-
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//
-//        // ✅ טען מחדש את התמונה אם יש אחת קיימת מה-ViewModel
-////        val uris = viewModel.imageUris.value
-////        if (!uris.isNullOrEmpty()) {
-////            binding.resultImage.setImageURI(uris[0])
-////        }
-//        if (savedInstanceState == null) {
-//            viewModel.setImageUris(emptyList())
-//            binding.resultImage.setImageDrawable(null)
-//        } else {
-//            val uris = viewModel.imageUris.value
-//            if (!uris.isNullOrEmpty()) {
-//                binding.resultImage.setImageURI(uris[0])
-//            }
-//        }
-//    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

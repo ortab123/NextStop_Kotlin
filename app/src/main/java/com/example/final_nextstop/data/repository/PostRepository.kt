@@ -1,42 +1,37 @@
 package com.example.final_nextstop.data.repository
 
-import android.app.Application
+import android.content.Context
 import com.example.final_nextstop.data.local_db.PostDao
 import com.example.final_nextstop.data.local_db.PostDataBase
 import com.example.final_nextstop.data.model.Post
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
 
-class PostRepository(application: Application) {
+class PostRepository @Inject constructor(
+    private val postDao: PostDao
+) {
 
-    private var postDao:PostDao?
+    fun getPosts() = postDao.getPosts()
 
-    init{
-        val db = PostDataBase.getDatabase(application.applicationContext)
-        postDao =db?.postsDao()
+    suspend fun addPost(post: Post) {
+        postDao.addPost(post)
     }
 
-    fun getPosts() = postDao?.getPosts()
-
-    suspend fun addPost(post:Post){
-        postDao?.addPost(post)
+    suspend fun deletePost(post: Post) {
+        postDao.deletePost(post)
     }
 
-    suspend fun deletePost(post:Post){
-        postDao?.deletePost(post)
-    }
+    fun getPost(id: Int) = postDao.getPost(id)
 
-    fun getPost(id:Int) = postDao?.getPost(id)
-
-    suspend fun deleteALL(){
-         postDao?.deleteAll()
+    suspend fun deleteALL() {
+        postDao.deleteAll()
     }
 
     suspend fun updatePost(post: Post) {
-        postDao?.updatePost(post)
+        postDao.updatePost(post)
     }
 
     suspend fun updateProfileImageUri(id: Int, profileImageUri: String) {
-        postDao?.updateProfileImageUri(id, profileImageUri)
+        postDao.updateProfileImageUri(id, profileImageUri)
     }
-
-
 }

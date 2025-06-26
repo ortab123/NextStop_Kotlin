@@ -1,26 +1,25 @@
 package com.example.final_nextstop.ui
 
-import android.app.Application
 import android.net.Uri
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.final_nextstop.data.model.Post
 import com.example.final_nextstop.data.repository.PostRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class PostsViewModel(application: Application) : AndroidViewModel(application) {
+@HiltViewModel
+class PostsViewModel @Inject constructor(
+    private val repository: PostRepository
+) : ViewModel() {
 
-    private val repository = PostRepository(application)
-    val posts : LiveData<List<Post>>? = repository.getPosts()
+    val posts: LiveData<List<Post>>? = repository.getPosts()
 
     private val _profileImageUri = MutableLiveData<String?>()
     val profileImageUri: LiveData<String?> get() = _profileImageUri
 
-    private val _chosenPost =  MutableLiveData<Post>()
-
-    val chosenPost : LiveData<Post> get() = _chosenPost
+    private val _chosenPost = MutableLiveData<Post>()
+    val chosenPost: LiveData<Post> get() = _chosenPost
 
     private val _imageUris = MutableLiveData<List<Uri>>(emptyList())
     val imageUris: LiveData<List<Uri>> get() = _imageUris
@@ -45,29 +44,29 @@ class PostsViewModel(application: Application) : AndroidViewModel(application) {
         _imageUris.value = currentList
     }
 
-    fun setPost(post:Post){
+    fun setPost(post: Post) {
         _chosenPost.value = post
     }
 
-    fun addPost(post:Post){
+    fun addPost(post: Post) {
         viewModelScope.launch {
             repository.addPost(post)
         }
     }
 
-    fun deletePost(post:Post){
+    fun deletePost(post: Post) {
         viewModelScope.launch {
             repository.deletePost(post)
         }
     }
 
-    fun deleteAll(){
+    fun deleteAll() {
         viewModelScope.launch {
             repository.deleteALL()
         }
     }
 
-    fun updatePost(post:Post){
+    fun updatePost(post: Post) {
         viewModelScope.launch {
             repository.updatePost(post)
         }
@@ -78,5 +77,4 @@ class PostsViewModel(application: Application) : AndroidViewModel(application) {
             repository.updateProfileImageUri(id, profileImageUri)
         }
     }
-
 }
