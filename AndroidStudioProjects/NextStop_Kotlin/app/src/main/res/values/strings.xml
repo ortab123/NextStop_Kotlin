@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Final_NextStop</string>
+    <string name="select_location">Select location</string>
+    <string name="please_select_location">Please select location</string>
+    <string name="please_write_description">Please write description</string>
+    <string name="confirm_delete">Confirm delete</string>
+    <string name="are_you_sure_you_want_to_delete_all_posts">Are you sure you want to delete all posts?</string>
+    <string name="are_you_sure_you_want_to_delete_the_post">Are you sure you want to delete the post?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="gallery">Gallery</string>
+    <string name="all_posts_deleted">All posts deleted</string>
+    <string name="new_post">New Post</string>
+    <string name="location">Location</string>
+    <string name="place">Place</string>
+    <string name="add_place">Add place</string>
+    <string name="description">Description</string>
+    <string name="add_your_recommendations">Add your recommendations</string>
+    <string name="add_post">Add Post</string>
+    <string name="your_location">Your Location</string>
+    <string name="date">Date</string>
+    <string name="save">Save</string>
+    <string name="my_journey">My journey</string>
+    <string name="delete_all">Delete all</string>
+    <string name="the_post_deleted">Post deleted</string>
+    <string name="no_posts_comment">No posts yet,\npress ➕ in order to add your first post!</string>
+
+</resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Final_NextStop</string>
+    <string name="select_location">בחר מיקום</string>
+    <string name="please_select_location">אנא בחר מיקום</string>
+    <string name="please_write_description">אנא בחר תיאור</string>
+    <string name="confirm_delete">אישור מחיקה</string>
+    <string name="are_you_sure_you_want_to_delete_all_posts">אתה בטוח רוצה למחוק את כל הפוסטים?</string>
+    <string name="are_you_sure_you_want_to_delete_the_post">אתה בטוח שאתה רוצה למחוק את הפוסט?</string>
+    <string name="yes">כן</string>
+    <string name="no">לא</string>
+    <string name="gallery">גלריה</string>
+    <string name="all_posts_deleted">כל הפוסטים נמחקו</string>
+    <string name="new_post">פוסט חדש</string>
+    <string name="location">מיקום</string>
+    <string name="place">מקום</string>
+    <string name="add_place">הוספת מקום</string>
+    <string name="description">תיאור</string>
+    <string name="add_your_recommendations">הוסף את המלצותיך</string>
+    <string name="add_post">הוספת פוסט</string>
+    <string name="your_location">המיקום שלך</string>
+    <string name="date">תאריך</string>
+    <string name="save">שמירה</string>
+    <string name="my_journey">המסע שלי</string>
+    <string name="delete_all">מחק הכל</string>
+    <string name="the_post_deleted">הפוסט נמחק</string>
+    <string name="no_posts_comment">אין פוסטים עדיין,\nלחץ על ➕ כדי להוסיף את הפוסט הראשון שלך!</string>
+</resources>
