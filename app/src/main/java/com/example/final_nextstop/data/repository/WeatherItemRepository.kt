@@ -81,7 +81,7 @@ class WeatherItemRepository @Inject constructor(
                 weatherDao.insertWeatherItem(item)
                 Resource.success(Unit)
             }
-            is Error -> Resource.error(status.message ?: "שגיאה בבקשת התחזית")
+            is Error -> Resource.error(status.message ?: "Error fetching forecast")
             else -> Resource.loading()
         }
     }
@@ -93,14 +93,14 @@ class WeatherItemRepository @Inject constructor(
         return when (val coordStatus = coordResult.status) {
             is Success -> {
                 val coord = coordStatus.data?.firstOrNull()
-                    ?: return Resource.error("לא נמצאו קואורדינטות לעיר: $city")
+                    ?: return Resource.error("No coordinates found for city: $city")
 
                 val airResult = weatherRemoteDataSource.getAirPollution(coord.lat, coord.lon, Constants.API_KEY)
 
                 when (val airStatus = airResult.status) {
                     is Success -> {
                         val aqi = airStatus.data?.list?.firstOrNull()?.main?.aqi
-                            ?: return Resource.error("לא ניתן לקרוא את רמת הזיהום (AQI)")
+                            ?: return Resource.error("Unable to read pollution level (AQI)")
 
                         val level = when (aqi) {
                             1 -> "very good"
@@ -123,12 +123,12 @@ class WeatherItemRepository @Inject constructor(
                         Resource.success(Unit)
                     }
 
-                    is Error -> Resource.error(airStatus.message ?: "שגיאה בקבלת נתוני זיהום אוויר")
+                    is Error -> Resource.error(airStatus.message ?: "Error retrieving air pollution data")
                     else -> Resource.loading()
                 }
             }
 
-            is Error -> Resource.error(coordStatus.message ?: "שגיאה באיתור קואורדינטות")
+            is Error -> Resource.error(coordStatus.message ?: "Error locating coordinates")
             else -> Resource.loading()
         }
     }

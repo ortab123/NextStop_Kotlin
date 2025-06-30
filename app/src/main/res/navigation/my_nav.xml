@@ -99,6 +99,10 @@
         android:name="com.example.final_nextstop.ui.single_characters.EditDescriptionFragment"
         android:label="edit_description_layout"
         tools:layout="@layout/edit_description_layout" >
+        <argument
+            android:name="source"
+            app:argType="string"
+            android:defaultValue="profile"/>
         <action
             android:id="@+id/action_editDescriptionFragment_to_descriptionFragment"
             app:destination="@id/descriptionFragment"
@@ -109,7 +113,11 @@
         android:id="@+id/mapFragment"
         android:name="com.example.final_nextstop.ui.MapFragment"
         android:label="MapFragment"
-        tools:layout="@layout/map_layout"/>
+        tools:layout="@layout/map_layout">
+        <action
+            android:id="@+id/action_mapFragment_to_descriptionFragment"
+            app:destination="@id/descriptionFragment" />
+    </fragment>
     <fragment
         android:id="@+id/favoritePostsFragment"
         android:name="com.example.final_nextstop.ui.FavoritePostsFragment"

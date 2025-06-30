@@ -40,38 +40,51 @@ class AddWeatherItemFragment : Fragment() {
             binding.labelSpinner.visibility = binding.spinnerCountriesAddWeatherItem.visibility
         }
 
+        binding.btnBackFromAddWeather.setOnClickListener {
+            findNavController().navigate(R.id.action_addWeatherItemFragment_to_weatherFragment)
+        }
+
         binding.btnSubmit.setOnClickListener {
             val selectedOption = binding.radioGroupOptions.checkedRadioButtonId
             val country = binding.spinnerCountriesAddWeatherItem.selectedItem?.toString()
             var capital = CapitalResolver.getCapitalFromCountryInEnglish(country ?: "")
 
             if (Locale.getDefault().language == "iw") {
-                // המכשיר מוגדר על עברית
                 capital = CapitalResolver.getCapitalFromCountryInHebrew(country ?: "")
             }
 
+            if (selectedOption == -1) {
+                toast("Please select an action")
+                return@setOnClickListener
+            }
 
             if (capital.isNullOrBlank()) {
-                toast("לא נמצאה עיר בירה תקפה")
+                if(binding.spinnerCountriesAddWeatherItem.selectedItem=="Select location")
+                {
+                    toast("Please choose a country")
+                }
+                else{
+                    toast("No valid capital city was found")
+                }
                 return@setOnClickListener
             }
 
             when (selectedOption) {
                 binding.radioTempByCountry.id -> {
                     viewModel.fetchWeatherForCity(capital)
-                    toast("מזג אוויר ב-$capital")
+                    toast("Weather in $country")
                 }
                 binding.radioForecastByCountry.id -> {
                     viewModel.fetchForecast(capital)
-                    toast("תחזית ב-$capital")
+                    toast("Forecast in $country")
                 }
                 binding.radioAirPollutionByCountry.id -> {
 
 
                     viewModel.fetchAirPollutionForCapital(capital)
-                    toast("זיהום אוויר ב-$capital")
+                    toast("Air pollution at $country")
                 }
-                else -> toast("יש לבחור פעולה")
+                else -> toast("Please select an action")
             }
 
             findNavController().popBackStack()

@@ -41,7 +41,8 @@
                 android:text="@string/new_post"
                 android:textColor="@color/black"
                 android:textSize="25sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:fontFamily="@font/rubik_variablefont_wght"/>
 
             <TextView
                 android:layout_width="match_parent"

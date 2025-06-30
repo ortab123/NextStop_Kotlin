@@ -5,9 +5,8 @@
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.add_character.AddWeatherItemFragment">
-
-
+    tools:context=".ui.add_character.AddWeatherItemFragment"
+    android:background="@color/white">
 
     <LinearLayout
         android:id="@+id/rootLayout"
@@ -42,11 +41,15 @@
         </LinearLayout>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="בחר דרך לקבלת מידע:"
-            android:textSize="18sp"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:text="New weather item"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/rubik_variablefont_wght"/>
 
         <RadioGroup
             android:id="@+id/radioGroupOptions"
@@ -58,19 +61,30 @@
                 android:id="@+id/radioTempByCountry"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="מזג אוויר לפי מדינה" />
+                android:text="Weather by country"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                />
 
             <RadioButton
                 android:id="@+id/radioForecastByCountry"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="תחזית לפי מדינה" />
+                android:text="Forcast by country"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+
+                />
 
             <RadioButton
                 android:id="@+id/radioAirPollutionByCountry"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="זיהום אוויר לפי מדינה" />
+                android:text="Air pollution by country"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+
+                />
 
         </RadioGroup>
 
@@ -79,37 +93,31 @@
             android:id="@+id/labelSpinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="בחר מדינה:"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="8dp" />
+            android:text="Choose country:"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            />
 
         <Spinner
             android:id="@+id/spinnerCountriesAddWeatherItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="16dp"
+            android:textColor="@color/black"
+            android:background="@drawable/edit_text_background"
+            />
 
-<!--        <Spinner-->
-<!--            android:id="@+id/countryCodeSpinner"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:spinnerMode="dropdown"-->
-<!--            android:layout_margin="16dp"/>-->
-
-<!--        <EditText-->
-<!--            android:id="@+id/editTextZip"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:hint="הכנס מיקוד"-->
-<!--            android:inputType="number"-->
-<!--            android:layout_marginTop="8dp"-->
-<!--            android:layout_marginBottom="16dp" />-->
 
         <Button
             android:id="@+id/btnSubmit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="שליחה"
-            android:layout_marginTop="24dp" />
+            android:text="Send"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="@color/black"
+            android:textColor="@color/white"/>
     </LinearLayout>
 </ScrollView>

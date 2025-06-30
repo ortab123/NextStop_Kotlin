@@ -6,12 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.final_nextstop.databinding.FavoritePostsLayoutBinding
 import com.example.final_nextstop.ui.all_characters.PostAdapter
 import com.example.final_nextstop.ui.PostsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import com.example.final_nextstop.data.model.Post
+import com.example.final_nextstop.ui.all_characters.ProfileFragmentDirections
 import com.example.final_nextstop.util.autoCleared
 
 
@@ -38,7 +40,9 @@ class FavoritePostsFragment : Fragment() {
             override fun onPostClicked(index: Int) {
                 val post = adapter.postAt(index)
                 viewModel.setPost(post)
-                FavoritePostsFragmentDirections.actionFavoritePostsFragmentToDescriptionFragment("favorite")
+                findNavController().navigate(
+                    FavoritePostsFragmentDirections.actionFavoritePostsFragmentToDescriptionFragment("favorite")
+                )
             }
 
             override fun onFavoriteClicked(post : Post) {

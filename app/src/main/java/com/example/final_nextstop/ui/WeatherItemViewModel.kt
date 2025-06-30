@@ -24,22 +24,6 @@ class WeatherViewModel @Inject constructor(
     private val _weatherFetchStatus = MutableLiveData<Resource<Unit>>()
     val weatherFetchStatus: LiveData<Resource<Unit>> get() = _weatherFetchStatus
 
-//    fun setSelectedWeatherItem(item: WeatherItem) {
-//        _selectedWeatherItem.value = item
-//    }
-
-//    fun addWeatherItem(item: WeatherItem) {
-//        viewModelScope.launch {
-//            repository.addWeatherItem(item)
-//        }
-//    }
-
-//    fun updateWeatherItem(item: WeatherItem) {
-//        viewModelScope.launch {
-//            repository.updateWeatherItem(item)
-//        }
-//    }
-
     fun deleteWeatherItem(item: WeatherItem) {
         viewModelScope.launch {
             repository.deleteWeatherItem(item)

@@ -104,7 +104,6 @@ class AddPostFragment : Fragment() {
 
         for (i in 0 until spinnerAdapter.count) {
             val countryName = spinnerAdapter.getItem(i)
-            Log.d("SpinnerCountry", "מדינה בעברית: $countryName")
         }
 
         // חזרה לפרופיל

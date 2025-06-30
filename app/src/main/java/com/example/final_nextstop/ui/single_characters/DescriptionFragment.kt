@@ -32,7 +32,8 @@ class DescriptionFragment : Fragment() {
     ): View? {
         _binding = DescriptionLayoutBinding.inflate(inflater, container, false)
         binding.imageViewEditPost.setOnClickListener {
-            findNavController().navigate(R.id.action_descriptionFragment_to_editDescriptionFragment)
+            val action = DescriptionFragmentDirections.actionDescriptionFragmentToEditDescriptionFragment(args.source)
+            findNavController().navigate(action)
         }
 
         return binding.root
@@ -82,6 +83,8 @@ class DescriptionFragment : Fragment() {
                 "favorite" -> findNavController().navigate(R.id.favoritePostsFragment)//
                 "profile" -> findNavController().navigate(R.id.profileFragment)
                 "gallery" -> findNavController().navigate(R.id.galleryFragment)
+                "map" -> findNavController().navigate(R.id.mapFragment)
+                "editDescription" -> findNavController().navigate(R.id.editDescriptionFragment)
                 else -> findNavController().popBackStack()
             }
         }

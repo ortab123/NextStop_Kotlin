@@ -11,6 +11,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
 import com.example.final_nextstop.R
 import com.example.final_nextstop.data.model.Post
@@ -25,15 +26,12 @@ import java.util.Locale
 @AndroidEntryPoint
 class EditDescriptionFragment : Fragment() {
     private var _binding : EditDescriptionLayoutBinding by autoCleared()
-
     val viewModel : PostsViewModel by activityViewModels()
-
     private val binding get() = _binding
-
     private var editableImages = mutableListOf<String>()
-
-
     private lateinit var editImagesAdapter: EditableImagesAdapter
+    private val args: EditDescriptionFragmentArgs by navArgs()
+
 
     private val pickImageLauncher = registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
         uri?.let {
@@ -92,6 +90,7 @@ class EditDescriptionFragment : Fragment() {
 
         binding.mbSavePost.setOnClickListener {
 
+            val isFavoritePost = viewModel.chosenPost.value.isFavorite
             val selectedLocation = binding.spinnerCountriesEdit.selectedItem.toString()
             val currentDescription = binding.editTextEditPostDescription.text.toString()
 
@@ -113,14 +112,17 @@ class EditDescriptionFragment : Fragment() {
                 description = binding.editTextEditPostDescription.text.toString(),
                 images = editableImages.filterNotNull(),
                 profileImageUri = viewModel.profileImageUri.value,
-                date = originalPost.date
+                date = originalPost.date,
+                isFavorite = isFavoritePost
+
             )
 
             viewModel.setPost(updatedPost)
             viewModel.updatePost(updatedPost)
 
 
-            findNavController().navigate(R.id.action_editDescriptionFragment_to_descriptionFragment)
+            val action = EditDescriptionFragmentDirections.actionEditDescriptionFragmentToDescriptionFragment(args.source)
+            findNavController().navigate(action)
         }
 
 
