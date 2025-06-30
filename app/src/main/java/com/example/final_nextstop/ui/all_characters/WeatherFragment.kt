@@ -34,8 +34,11 @@ class WeatherFragment : Fragment() {
         binding.recyclerWeatherItems.layoutManager = LinearLayoutManager(requireContext())
 
         viewModel.weatherItems.observe(viewLifecycleOwner) {
+
             if (it.isNotEmpty()) {
-                adapter.setWeatherItems(it)
+                val sortedWeatherItems = it.sortedByDescending { weatherItem -> weatherItem.id }
+                adapter.setWeatherItems(sortedWeatherItems)
+
                 binding.recyclerWeatherItems.visibility = View.VISIBLE
                 binding.textViewNoWeatherItems.visibility = View.GONE
                 binding.textSwipeHint.visibility = View.VISIBLE

@@ -4,11 +4,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.final_nextstop.data.model.SearchType
 import com.example.final_nextstop.data.model.WeatherItem
 import com.example.final_nextstop.databinding.WeatherItemLayoutBinding
 import com.example.final_nextstop.util.CapitalResolver
+import java.util.Locale
 
 class WeatherItemAdapter : RecyclerView.Adapter<WeatherItemAdapter.WeatherViewHolder>() {
 
@@ -26,7 +26,14 @@ class WeatherItemAdapter : RecyclerView.Adapter<WeatherItemAdapter.WeatherViewHo
         fun bind(item: WeatherItem) {
 
             binding.textViewCountryName.apply {
-                text = CapitalResolver.getCountryForCapital(item.countryName) ?: item.countryName
+                if (Locale.getDefault().language == "iw") {
+                    // המכשיר מוגדר על עברית
+                    text = CapitalResolver.getCountryFromCapitalInHebrew(item.cityName) ?: item.cityName
+                }
+                else if (Locale.getDefault().language == "en"){
+                    text = CapitalResolver.getCountryFromCapitalInEnglish(item.cityName) ?: item.cityName
+
+                }
             }
 
             if (item.searchType == SearchType.TEMP_BY_COUNTRY) {

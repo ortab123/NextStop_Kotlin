@@ -12,8 +12,8 @@ data class WeatherItem(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
 
-    @ColumnInfo(name = "countryName")
-    val countryName: String,
+    @ColumnInfo(name = "cityName")
+    val cityName: String,
 
     @ColumnInfo(name = "airPollution")
     val airPollution: String = "",

@@ -2,6 +2,8 @@ package com.example.final_nextstop.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
@@ -27,9 +29,22 @@ class MainActivity : AppCompatActivity() {
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
 
+        val buttons = listOf(
+            binding.favoritePostsButton,
+            binding.profileButton,
+            binding.mapButton,
+            binding.weatherButton
+        )
+
+        val blueColor = ContextCompat.getColor(this, R.color.blue) // תכלת
+        val blackColor = ContextCompat.getColor(this, android.R.color.black)
 
         binding.profileButton.setOnClickListener {
             navController.navigate(R.id.profileFragment)
+            buttons.forEach { it.setColorFilter(blackColor) }
+
+            // צובע רק את הכפתור שנלחץ לתכלת
+            binding.profileButton.setColorFilter(blueColor)
         }
 
         binding.favoritePostsButton.setOnClickListener {
@@ -38,6 +53,10 @@ class MainActivity : AppCompatActivity() {
                 .setLaunchSingleTop(true)
                 .build()
             navController.navigate(R.id.favoritePostsFragment, null, navOptions)
+            buttons.forEach { it.setColorFilter(blackColor) }
+
+            // צובע רק את הכפתור שנלחץ לתכלת
+            binding.favoritePostsButton.setColorFilter(blueColor)
         }
 
         binding.mapButton.setOnClickListener {
@@ -46,6 +65,10 @@ class MainActivity : AppCompatActivity() {
                 .setLaunchSingleTop(true)
                 .build()
             navController.navigate(R.id.mapFragment, null, navOptions)
+            buttons.forEach { it.setColorFilter(blackColor) }
+
+            // צובע רק את הכפתור שנלחץ לתכלת
+            binding.mapButton.setColorFilter(blueColor)
         }
 
         binding.weatherButton.setOnClickListener {
@@ -54,6 +77,10 @@ class MainActivity : AppCompatActivity() {
                 .setLaunchSingleTop(true)
                 .build()
             navController.navigate(R.id.weatherFragment, null, navOptions)
+            buttons.forEach { it.setColorFilter(blackColor) }
+
+            // צובע רק את הכפתור שנלחץ לתכלת
+            binding.weatherButton.setColorFilter(blueColor)
         }
     }
 }

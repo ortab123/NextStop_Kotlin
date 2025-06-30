@@ -6,12 +6,9 @@ import com.example.final_nextstop.data.model.SearchType
 import com.example.final_nextstop.data.model.WeatherItem
 import com.example.final_nextstop.data.remote_db.WeatherRemoteDataSource
 import com.example.final_nextstop.data.remote_db.WeatherResponse
-import com.example.final_nextstop.util.CapitalResolver
 import com.example.final_nextstop.util.Constants
-import com.example.final_nextstop.util.Loading
 import com.example.final_nextstop.util.Resource
 import com.example.final_nextstop.util.Success
-import com.example.final_nextstop.util.safeCall
 import javax.inject.Inject
 
 class WeatherItemRepository @Inject constructor(
@@ -46,7 +43,7 @@ class WeatherItemRepository @Inject constructor(
             is Success<WeatherResponse> -> {
                 val response = status.data!!
                 val item = WeatherItem(
-                    countryName = response.name,
+                    cityName = response.name,
                     temperature = response.main.temp,
                     description = "",
                     searchType = SearchType.TEMP_BY_COUNTRY
@@ -76,7 +73,7 @@ class WeatherItemRepository @Inject constructor(
                 val emojiForDescription = getEmojiForDescription(currentDescription)
 
                 val item = WeatherItem(
-                    countryName = response.city.name,
+                    cityName = response.city.name,
                     temperature = 0.0, // או ממוצע או 0
                     description = "Forecast: $currentDescription$emojiForDescription",
                     searchType = SearchType.FORECAST_BY_COUNTRY
@@ -115,7 +112,7 @@ class WeatherItemRepository @Inject constructor(
                         }
 
                         val item = WeatherItem(
-                            countryName = city,//need to implement with response
+                            cityName = city,//need to implement with response
                             temperature = 0.0,
                             airPollution = "Air pollution: ${level}",
                             description = "",

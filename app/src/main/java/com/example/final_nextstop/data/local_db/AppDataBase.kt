@@ -7,7 +7,7 @@ import com.example.final_nextstop.data.model.Post
 import com.example.final_nextstop.data.model.SearchType
 import com.example.final_nextstop.data.model.WeatherItem
 
-@Database(entities =  [Post::class, WeatherItem::class], version = 4, exportSchema = false)
+@Database(entities =  [Post::class, WeatherItem::class], version = 5, exportSchema = false)
 @TypeConverters(AppDataBase.Converters::class)
 abstract class AppDataBase : RoomDatabase() {
 

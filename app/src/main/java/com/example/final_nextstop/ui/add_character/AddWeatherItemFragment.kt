@@ -1,7 +1,6 @@
 package com.example.final_nextstop.ui.add_character
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.*
 import androidx.fragment.app.Fragment
@@ -44,7 +43,13 @@ class AddWeatherItemFragment : Fragment() {
         binding.btnSubmit.setOnClickListener {
             val selectedOption = binding.radioGroupOptions.checkedRadioButtonId
             val country = binding.spinnerCountriesAddWeatherItem.selectedItem?.toString()
-            val capital = CapitalResolver.getCapitalForCountry(country ?: "")
+            var capital = CapitalResolver.getCapitalFromCountryInEnglish(country ?: "")
+
+            if (Locale.getDefault().language == "iw") {
+                // המכשיר מוגדר על עברית
+                capital = CapitalResolver.getCapitalFromCountryInHebrew(country ?: "")
+            }
+
 
             if (capital.isNullOrBlank()) {
                 toast("לא נמצאה עיר בירה תקפה")

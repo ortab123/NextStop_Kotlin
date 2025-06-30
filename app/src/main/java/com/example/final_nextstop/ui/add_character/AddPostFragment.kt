@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.net.Uri
+import android.util.Log
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
@@ -101,6 +102,11 @@ class AddPostFragment : Fragment() {
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerCountriesAddPost.adapter = spinnerAdapter
 
+        for (i in 0 until spinnerAdapter.count) {
+            val countryName = spinnerAdapter.getItem(i)
+            Log.d("SpinnerCountry", "מדינה בעברית: $countryName")
+        }
+
         // חזרה לפרופיל
         binding.btnBackFromAddPost.setOnClickListener {
             viewModel.setImageUris(emptyList())
@@ -110,8 +116,6 @@ class AddPostFragment : Fragment() {
         // שמירת הפוסט
         binding.btnAddPost.setOnClickListener {
             val selectedLocation = binding.spinnerCountriesAddPost.selectedItem.toString()
-            val selectedCountry = binding.spinnerCountriesAddPost.selectedItem.toString()
-            val capital = CapitalResolver.getCapitalForCountry(selectedCountry)
             val currentDescription = binding.editTxtPostDescription.text.toString()
 
             if (selectedLocation == getString(R.string.select_location)) {
