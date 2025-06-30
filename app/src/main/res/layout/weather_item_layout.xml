@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:text="00°C"
                 android:textColor="@color/black"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:layout_marginTop="4dp"
                 android:visibility="gone"/>
 

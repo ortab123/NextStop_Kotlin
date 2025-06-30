@@ -52,6 +52,15 @@ class FavoritePostsFragment : Fragment() {
         viewModel.posts?.observe(viewLifecycleOwner) { allPosts ->
             val favoritePosts = allPosts.filter { it.isFavorite }
             adapter.setPosts(favoritePosts)
+
+            if (favoritePosts.isNotEmpty()) {
+                binding.recyclerFavoritePosts.visibility = View.VISIBLE
+                binding.textViewNoPosts.visibility = View.GONE
+            }
+            else {
+                binding.recyclerFavoritePosts.visibility = View.GONE
+                binding.textViewNoPosts.visibility = View.VISIBLE
+            }
         }
     }
 }

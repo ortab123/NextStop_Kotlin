@@ -3,30 +3,110 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="true"
     android:background="@color/white"
     tools:context=".ui.FavoritePostsFragment">
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/img_logo"
+                android:layout_gravity="start"
+                android:src="@drawable/logo_of_app"
+                android:layout_weight="0.1" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"/>
+
+
+
+        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="My favorite trips"
-            android:textSize="24sp"
+            android:textSize="30sp"
             android:textStyle="bold"
             android:layout_gravity="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:fontFamily="@font/rubik_variablefont_wght"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_favorite_posts"
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:id="@+id/weather_image_view"
+            android:src="@drawable/favorite_trips"
+            android:layout_marginBottom="10dp"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardFavoritePosts"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingTop="10dp" />
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@color/white"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/my_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@color/light_blue"
+                    app:titleTextColor="@color/light_blue" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="500dp">
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_favorite_posts"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:nestedScrollingEnabled="true"
+                        android:overScrollMode="always" />
+
+                    <TextView
+                        android:id="@+id/text_view_no_posts"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:padding="24dp"
+                        android:text="You haven't liked any posts yet.\nTap the heart icon on a post to add it to your favorites."
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:background="@color/white"
+                        android:visibility="gone" />
+
+                </FrameLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

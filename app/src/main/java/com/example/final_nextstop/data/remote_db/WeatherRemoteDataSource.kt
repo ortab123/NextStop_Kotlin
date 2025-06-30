@@ -25,7 +25,6 @@ class WeatherRemoteDataSource @Inject constructor(
             if (response.isSuccessful) {
                 response.body() ?: throw Exception("Response body is null")
             } else {
-                Log.e("DEBUG", "API failed: code = ${response.code()}, message = ${response.message()}")
 
                 throw Exception("API error: ${response.code()} ${response.message()}")
             }

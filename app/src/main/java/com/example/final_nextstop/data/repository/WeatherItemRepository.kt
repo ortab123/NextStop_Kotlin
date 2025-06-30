@@ -70,11 +70,15 @@ class WeatherItemRepository @Inject constructor(
 
         return when (val status = result.status) {
             is Success -> {
+
                 val response = status.data!!
+                val currentDescription = response.list.firstOrNull()?.weather?.firstOrNull()?.description ?: "N/A"
+                val emojiForDescription = getEmojiForDescription(currentDescription)
+
                 val item = WeatherItem(
                     countryName = response.city.name,
                     temperature = 0.0, // או ממוצע או 0
-                    description = "Forecast: ${response.list.firstOrNull()?.weather?.firstOrNull()?.description ?: "N/A"}",
+                    description = "Forecast: $currentDescription$emojiForDescription",
                     searchType = SearchType.FORECAST_BY_COUNTRY
                 )
                 weatherDao.insertWeatherItem(item)
@@ -131,4 +135,19 @@ class WeatherItemRepository @Inject constructor(
             else -> Resource.loading()
         }
     }
+
+    fun getEmojiForDescription(description: String): String {
+        return when (description.lowercase()) {
+            "clear sky" -> "☀️"
+            "few clouds" -> "🌤️"
+            "scattered clouds", "broken clouds", "overcast clouds" -> "☁️"
+            "light rain", "drizzle" -> "🌦️"
+            "moderate rain", "heavy intensity rain" -> "🌧️"
+            "thunderstorm" -> "🌩️"
+            "snow" -> "❄️"
+            "mist", "fog", "haze" -> "🌫️"
+            else -> "❓" // ברירת מחדל
+        }
+    }
+
 }

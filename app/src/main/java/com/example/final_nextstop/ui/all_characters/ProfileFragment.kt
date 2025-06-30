@@ -98,7 +98,8 @@ class ProfileFragment : Fragment() {
                 binding.recyclerPosts.visibility = View.VISIBLE
                 binding.textViewNoPosts.visibility = View.GONE
                 binding.textSwipeHint.visibility = View.VISIBLE
-            } else {
+            }
+            else {
                 binding.recyclerPosts.visibility = View.GONE
                 binding.textViewNoPosts.visibility = View.VISIBLE
                 binding.textSwipeHint.visibility = View.GONE

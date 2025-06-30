@@ -45,7 +45,6 @@ class AddWeatherItemFragment : Fragment() {
             val selectedOption = binding.radioGroupOptions.checkedRadioButtonId
             val country = binding.spinnerCountriesAddWeatherItem.selectedItem?.toString()
             val capital = CapitalResolver.getCapitalForCountry(country ?: "")
-            Log.e("DEBUG", "Selected country: $country → Capital: ${CapitalResolver.getCapitalForCountry(country ?: "")}")
 
             if (capital.isNullOrBlank()) {
                 toast("לא נמצאה עיר בירה תקפה")
