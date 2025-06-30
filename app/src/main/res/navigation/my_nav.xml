@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/profileFragment">
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.final_nextstop.ui.all_characters.ProfileFragment"
+        android:label="profile_layout"
+        tools:layout="@layout/profile_layout" >
+        <action
+            android:id="@+id/action_profileFragment_to_addPostFragment"
+            app:destination="@id/addPostFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"/>
+        <action
+            android:id="@+id/action_profileFragment_to_galleryFragment"
+            app:destination="@id/galleryFragment"
+            app:enterAnim="@anim/from_bottom"
+            app:exitAnim="@anim/to_up"
+            app:popEnterAnim="@anim/from_up"
+            app:popExitAnim="@anim/to_bottom"/>
+        <action
+            android:id="@+id/action_profileFragment_to_descriptionFragment"
+            app:destination="@id/descriptionFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/addPostFragment"
+        android:name="com.example.final_nextstop.ui.add_character.AddPostFragment"
+        android:label="add_post_layout"
+        tools:layout="@layout/add_post_layout" >
+        <action
+            android:id="@+id/action_addPostFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left"
+            app:popUpTo="@id/profileFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/galleryFragment"
+        android:name="com.example.final_nextstop.ui.all_characters.GalleryFragment"
+        android:label="gallery_layout"
+        tools:layout="@layout/gallery_layout" >
+        <action
+            android:id="@+id/action_galleryFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/from_up"
+            app:exitAnim="@anim/to_bottom"
+            app:popEnterAnim="@anim/from_bottom"
+            app:popExitAnim="@anim/to_up"
+            app:popUpTo="@id/profileFragment"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_galleryFragment_to_descriptionFragment"
+            app:destination="@id/descriptionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/descriptionFragment"
+        android:name="com.example.final_nextstop.ui.single_characters.DescriptionFragment"
+        android:label="description_layout"
+        tools:layout="@layout/description_layout" >
+        <argument
+            android:name="source"
+            app:argType="string"
+            android:defaultValue="profile"/>
+
+<!--        <argument-->
+<!--            android:name="post"-->
+<!--            app:argType="com.example.final_nextstop.data.model.Post" />-->
+        <action
+            android:id="@+id/action_descriptionFragment_to_editDescriptionFragment"
+            app:destination="@id/editDescriptionFragment" />
+        <action
+            android:id="@+id/action_descriptionFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left"
+            app:popUpTo="@id/profileFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_descriptionFragment_to_galleryFragment"
+            app:destination="@id/galleryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editDescriptionFragment"
+        android:name="com.example.final_nextstop.ui.single_characters.EditDescriptionFragment"
+        android:label="edit_description_layout"
+        tools:layout="@layout/edit_description_layout" >
+        <action
+            android:id="@+id/action_editDescriptionFragment_to_descriptionFragment"
+            app:destination="@id/descriptionFragment"
+            app:popUpTo="@id/descriptionFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.example.final_nextstop.ui.MapFragment"
+        android:label="MapFragment"
+        tools:layout="@layout/map_layout"/>
+    <fragment
+        android:id="@+id/favoritePostsFragment"
+        android:name="com.example.final_nextstop.ui.FavoritePostsFragment"
+        android:label="favorite_posts_layout"
+        tools:layout="@layout/favorite_posts_layout" >
+        <action
+            android:id="@+id/action_favoritePostsFragment_to_descriptionFragment"
+            app:destination="@id/descriptionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addWeatherItemFragment"
+        android:name="com.example.final_nextstop.ui.add_character.AddWeatherItemFragment"
+        android:label="add_weather_item_layout"
+        tools:layout="@layout/add_weather_item_layout" >
+        <action
+            android:id="@+id/action_addWeatherItemFragment_to_weatherFragment"
+            app:destination="@id/weatherFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/weatherFragment"
+        android:name="com.example.final_nextstop.ui.all_characters.WeatherFragment"
+        android:label="weather_layout"
+        tools:layout="@layout/weather_layout" >
+        <action
+            android:id="@+id/action_weatherFragment_to_addWeatherItemFragment"
+            app:destination="@id/addWeatherItemFragment" />
+    </fragment>
+</navigation>

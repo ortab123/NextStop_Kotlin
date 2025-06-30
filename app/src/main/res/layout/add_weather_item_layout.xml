@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.add_character.AddWeatherItemFragment">
+
+
+
+    <LinearLayout
+        android:id="@+id/rootLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center_horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:id="@+id/btn_back_from_add_weather"
+                android:layout_gravity="start"
+                android:src="@drawable/baseline_arrow_back_24"
+                android:layout_weight="0.1" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"/>
+
+
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="בחר דרך לקבלת מידע:"
+            android:textSize="18sp"
+            android:layout_marginBottom="12dp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupOptions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/radioTempByCountry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="מזג אוויר לפי מדינה" />
+
+            <RadioButton
+                android:id="@+id/radioForecastByCountry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="תחזית לפי מדינה" />
+
+            <RadioButton
+                android:id="@+id/radioAirPollutionByCountry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="זיהום אוויר לפי מדינה" />
+
+        </RadioGroup>
+
+        <!-- Spinner של מדינות -->
+        <TextView
+            android:id="@+id/labelSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="בחר מדינה:"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp" />
+
+        <Spinner
+            android:id="@+id/spinnerCountriesAddWeatherItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp" />
+
+<!--        <Spinner-->
+<!--            android:id="@+id/countryCodeSpinner"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:spinnerMode="dropdown"-->
+<!--            android:layout_margin="16dp"/>-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/editTextZip"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="הכנס מיקוד"-->
+<!--            android:inputType="number"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:layout_marginBottom="16dp" />-->
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="שליחה"
+            android:layout_marginTop="24dp" />
+    </LinearLayout>
+</ScrollView>
