@@ -76,7 +76,6 @@ class DescriptionFragment : Fragment() {
             }
         }
 
-
         val source = args.source
         binding.btnBackFromDescription.setOnClickListener {
             when (source) {
@@ -88,8 +87,5 @@ class DescriptionFragment : Fragment() {
                 else -> findNavController().popBackStack()
             }
         }
-
-
     }
-
 }

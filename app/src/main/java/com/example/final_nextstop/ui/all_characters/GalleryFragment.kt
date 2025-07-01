@@ -18,11 +18,8 @@ import com.example.final_nextstop.util.autoCleared
 @AndroidEntryPoint
 class GalleryFragment : Fragment() {
 
-
     private var _binding : GalleryLayoutBinding by autoCleared()
-
     private val binding get() = _binding
-
     private val viewModel : PostsViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

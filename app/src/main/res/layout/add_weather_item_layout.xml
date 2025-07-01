@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:gravity="center"
-            android:text="New weather item"
+            android:text="@string/new_weather_item"
             android:textColor="@color/black"
             android:textSize="25sp"
             android:textStyle="bold"
@@ -61,7 +61,7 @@
                 android:id="@+id/radioTempByCountry"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Weather by country"
+                android:text="@string/weather_by_country"
                 android:textColor="@color/black"
                 android:textSize="17sp"
                 />
@@ -70,7 +70,7 @@
                 android:id="@+id/radioForecastByCountry"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Forcast by country"
+                android:text="@string/forecast_by_country"
                 android:textColor="@color/black"
                 android:textSize="17sp"
 
@@ -80,7 +80,7 @@
                 android:id="@+id/radioAirPollutionByCountry"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Air pollution by country"
+                android:text="@string/air_pollution_by_country"
                 android:textColor="@color/black"
                 android:textSize="17sp"
 
@@ -93,7 +93,7 @@
             android:id="@+id/labelSpinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Choose country:"
+            android:text="@string/choose_country"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="20dp"
             android:textColor="@color/black"
@@ -115,7 +115,7 @@
             android:id="@+id/btnSubmit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Send"
+            android:text="@string/send"
             android:layout_marginTop="24dp"
             android:backgroundTint="@color/black"
             android:textColor="@color/white"/>

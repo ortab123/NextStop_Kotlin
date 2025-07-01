@@ -1,4 +1,4 @@
-package com.example.final_nextstop.ui
+package com.example.final_nextstop.ui.all_characters
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,11 +9,9 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.final_nextstop.databinding.FavoritePostsLayoutBinding
-import com.example.final_nextstop.ui.all_characters.PostAdapter
-import com.example.final_nextstop.ui.PostsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import com.example.final_nextstop.data.model.Post
-import com.example.final_nextstop.ui.all_characters.ProfileFragmentDirections
+import com.example.final_nextstop.ui.PostsViewModel
 import com.example.final_nextstop.util.autoCleared
 
 

@@ -2,7 +2,6 @@ package com.example.final_nextstop.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
@@ -36,14 +35,13 @@ class MainActivity : AppCompatActivity() {
             binding.weatherButton
         )
 
-        val blueColor = ContextCompat.getColor(this, R.color.blue) // תכלת
+        val blueColor = ContextCompat.getColor(this, R.color.blue)
         val blackColor = ContextCompat.getColor(this, android.R.color.black)
 
         binding.profileButton.setOnClickListener {
             navController.navigate(R.id.profileFragment)
             buttons.forEach { it.setColorFilter(blackColor) }
 
-            // צובע רק את הכפתור שנלחץ לתכלת
             binding.profileButton.setColorFilter(blueColor)
         }
 
@@ -55,7 +53,6 @@ class MainActivity : AppCompatActivity() {
             navController.navigate(R.id.favoritePostsFragment, null, navOptions)
             buttons.forEach { it.setColorFilter(blackColor) }
 
-            // צובע רק את הכפתור שנלחץ לתכלת
             binding.favoritePostsButton.setColorFilter(blueColor)
         }
 
@@ -67,7 +64,6 @@ class MainActivity : AppCompatActivity() {
             navController.navigate(R.id.mapFragment, null, navOptions)
             buttons.forEach { it.setColorFilter(blackColor) }
 
-            // צובע רק את הכפתור שנלחץ לתכלת
             binding.mapButton.setColorFilter(blueColor)
         }
 
@@ -79,7 +75,6 @@ class MainActivity : AppCompatActivity() {
             navController.navigate(R.id.weatherFragment, null, navOptions)
             buttons.forEach { it.setColorFilter(blackColor) }
 
-            // צובע רק את הכפתור שנלחץ לתכלת
             binding.weatherButton.setColorFilter(blueColor)
         }
     }

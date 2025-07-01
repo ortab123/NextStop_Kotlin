@@ -1,4 +1,4 @@
-package com.example.final_nextstop.ui
+package com.example.final_nextstop.ui.all_characters
 
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
@@ -13,7 +13,8 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.final_nextstop.R
 import com.example.final_nextstop.databinding.MapLayoutBinding
-import com.example.final_nextstop.ui.all_characters.ProfileFragmentDirections
+import com.example.final_nextstop.ui.PostsViewModel
+import com.example.final_nextstop.util.autoCleared
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -27,7 +28,7 @@ import java.util.Locale
 @AndroidEntryPoint
 class MapFragment : Fragment(), OnMapReadyCallback {
 
-    private var _binding: MapLayoutBinding? = null
+    private var _binding: MapLayoutBinding by autoCleared()
     private val binding get() = _binding!!
     private lateinit var googleMap: GoogleMap
     private val viewModel: PostsViewModel by activityViewModels()
@@ -78,7 +79,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                                         .icon(BitmapDescriptorFactory.fromBitmap(resource))
 
                                     val marker = googleMap.addMarker(markerOptions)
-                                    marker?.tag = post.id // שמירת מזהה הפוסט בטאג
+                                    marker?.tag = post.id
                                 }
 
                                 override fun onLoadCleared(placeholder: Drawable?) {}
@@ -93,7 +94,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 CameraUpdateFactory.newLatLngZoom(LatLng(30.0, 0.0), 2f)
             )
 
-            // מעבר לפוסט בלחיצה על התמונה (marker)
             googleMap.setOnMarkerClickListener { marker ->
                 val postId = marker.tag as? Int
                 val post = posts.find { it.id == postId }
@@ -103,15 +103,8 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                         MapFragmentDirections.actionMapFragmentToDescriptionFragment("map")
                     )
                 }
-                true // מציין שטיפלנו בלחיצה (לא להראות info window)
+                true
             }
         }
-    }
-
-
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

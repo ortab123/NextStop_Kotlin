@@ -6,8 +6,6 @@ plugins {
     id("androidx.navigation.safeargs.kotlin") version "2.9.0"
     id("com.google.gms.google-services")
     id("com.google.dagger.hilt.android")
-
-
 }
 
 android {
@@ -69,10 +67,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-//    implementation(platform(libs.firebase.bom))
-//    implementation(libs.firebase.analytics)
-//    implementation (libs.firebase.auth.ktx)
-//    implementation(libs.firebase.firestore.ktx)
     implementation(libs.kotlinx.coroutines.play.services)
     implementation (libs.retrofit)
     implementation (libs.converter.gson)
@@ -81,19 +75,4 @@ dependencies {
     kapt(libs.hilt.android.compiler)
     kapt (libs.androidx.hilt.compiler)
 
-
-
-
-
 }
-
-// לא הצליח
-//implementation("androidx.hilt:hilt-navigation-fragment:1.0.0")//
-//implementation (libs.androidx.hilt.lifecycle.viewmodel)
-//implementation (libs.androidx.lifecycle.common.java8)
-
-
-//הצליח
-////kapt("com.google.dagger:hilt-android-compiler:2.51.1")
-////kapt("androidx.hilt:hilt-compiler:1.0.0")//
-////implementation("com.google.dagger:hilt-android:2.51.1")

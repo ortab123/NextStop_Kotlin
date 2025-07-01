@@ -32,8 +32,6 @@ class ProfileFragment : Fragment() {
     private val viewModel: PostsViewModel by activityViewModels()
     private lateinit var adapter: PostAdapter
 
-
-
     private val pickImageLauncher: ActivityResultLauncher<String> =
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
             uri?.let {

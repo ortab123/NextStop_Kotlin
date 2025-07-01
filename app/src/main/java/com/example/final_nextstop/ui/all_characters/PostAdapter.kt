@@ -70,7 +70,6 @@ class PostAdapter(val callback: PostListener) : RecyclerView.Adapter<PostAdapter
         }
     }
 
-
     fun postAt(position: Int) = posts[position]
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =

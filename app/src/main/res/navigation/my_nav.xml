@@ -111,7 +111,7 @@
     </fragment>
     <fragment
         android:id="@+id/mapFragment"
-        android:name="com.example.final_nextstop.ui.MapFragment"
+        android:name="com.example.final_nextstop.ui.all_characters.MapFragment"
         android:label="MapFragment"
         tools:layout="@layout/map_layout">
         <action
@@ -120,7 +120,7 @@
     </fragment>
     <fragment
         android:id="@+id/favoritePostsFragment"
-        android:name="com.example.final_nextstop.ui.FavoritePostsFragment"
+        android:name="com.example.final_nextstop.ui.all_characters.FavoritePostsFragment"
         android:label="favorite_posts_layout"
         tools:layout="@layout/favorite_posts_layout" >
         <action

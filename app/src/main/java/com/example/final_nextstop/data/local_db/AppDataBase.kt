@@ -2,7 +2,6 @@ package com.example.final_nextstop.data.local_db
 
 import android.content.Context
 import androidx.room.*
-//import androidx.room.migration.Migration
 import com.example.final_nextstop.data.model.Post
 import com.example.final_nextstop.data.model.SearchType
 import com.example.final_nextstop.data.model.WeatherItem

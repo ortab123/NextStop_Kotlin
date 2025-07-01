@@ -12,7 +12,7 @@ class DeleteWeatherItemsConfirmationDialogFragment : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return AlertDialog.Builder(requireContext())
             .setTitle(R.string.confirm_delete)
-            .setMessage("are you sure you want to delete the weather item?")
+            .setMessage(getString(R.string.are_you_sure_you_want_to_delete_the_weather_item))
             .setPositiveButton(getString(R.string.yes)) { _, _ -> onDeleteWeatherItemConfirmed?.invoke() }
             .setNegativeButton(getString(R.string.no), null)
             .create()

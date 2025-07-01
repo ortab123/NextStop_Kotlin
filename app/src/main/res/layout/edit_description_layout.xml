@@ -117,15 +117,6 @@
                         android:textColor="@color/black"
                         android:textSize="18sp" />
 
-
-                    <!--                    <androidx.viewpager2.widget.ViewPager2-->
-                    <!--                        android:id="@+id/viewPagerImages"-->
-                    <!--                        android:layout_width="match_parent"-->
-                    <!--                        android:layout_height="wrap_content"-->
-                    <!--                        android:adjustViewBounds="true"-->
-                    <!--                        android:scaleType="fitCenter"/>-->
-
-
                     <androidx.viewpager2.widget.ViewPager2
                         android:id="@+id/editViewPagerImages"
                         android:layout_width="match_parent"
@@ -154,7 +145,7 @@
                         android:layout_gravity="center"
                         android:layout_marginBottom="10dp"
                         android:backgroundTint="@color/grey"
-                        android:text="Add image"
+                        android:text="@string/add_image"
                         android:textAllCaps="false"
                         android:textColor="@color/white"
                         app:icon="@drawable/baseline_add_24"

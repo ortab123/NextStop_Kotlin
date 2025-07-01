@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="true"
     android:background="@color/white"
-    tools:context=".ui.FavoritePostsFragment">
+    tools:context=".ui.all_characters.FavoritePostsFragment">
 
 
 
@@ -41,7 +41,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="My favorite trips"
+            android:text="@string/my_favorite_trips"
             android:textSize="30sp"
             android:textStyle="bold"
             android:layout_gravity="center"
@@ -96,7 +96,7 @@
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:padding="24dp"
-                        android:text="You haven't liked any posts yet.\nTap the heart icon on a post to add it to your favorites."
+                        android:text="@string/you_haven_t_liked_any_posts_yet_ntap_the_heart_icon_on_a_post_to_add_it_to_your_favorites"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="16sp"

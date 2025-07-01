@@ -54,17 +54,17 @@ class AddWeatherItemFragment : Fragment() {
             }
 
             if (selectedOption == -1) {
-                toast("Please select an action")
+                toast(getString(R.string.please_select_an_action))
                 return@setOnClickListener
             }
 
             if (capital.isNullOrBlank()) {
-                if(binding.spinnerCountriesAddWeatherItem.selectedItem=="Select location")
+                if(binding.spinnerCountriesAddWeatherItem.selectedItem==R.string.select_location)
                 {
-                    toast("Please choose a country")
+                    toast(getString(R.string.please_choose_a_country))
                 }
                 else{
-                    toast("No valid capital city was found")
+                    toast(getString(R.string.no_valid_capital_city_was_found))
                 }
                 return@setOnClickListener
             }
@@ -72,19 +72,19 @@ class AddWeatherItemFragment : Fragment() {
             when (selectedOption) {
                 binding.radioTempByCountry.id -> {
                     viewModel.fetchWeatherForCity(capital)
-                    toast("Weather in $country")
+                    toast(getString(R.string.weather_in, country))
                 }
                 binding.radioForecastByCountry.id -> {
                     viewModel.fetchForecast(capital)
-                    toast("Forecast in $country")
+                    toast(getString(R.string.forecast_in, country))
                 }
                 binding.radioAirPollutionByCountry.id -> {
 
 
                     viewModel.fetchAirPollutionForCapital(capital)
-                    toast("Air pollution at $country")
+                    toast(getString(R.string.air_pollution_in, country))
                 }
-                else -> toast("Please select an action")
+                else -> toast(getString(R.string.please_select_an_action))
             }
 
             findNavController().popBackStack()

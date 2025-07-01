@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.net.Uri
-import android.util.Log
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
@@ -21,7 +20,6 @@ import com.example.final_nextstop.ui.PostsViewModel
 import com.example.final_nextstop.ui.all_characters.ImagesAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import com.example.final_nextstop.util.autoCleared
-import com.example.final_nextstop.util.CapitalResolver
 import java.util.*
 
 
@@ -33,8 +31,6 @@ class AddPostFragment : Fragment() {
     private val viewModel: PostsViewModel by activityViewModels()
     private lateinit var imagesAdapter: ImagesAdapter
     private val imageUris = mutableListOf<Uri?>(null)
-
-
     private var currentSelectedPosition = -1
 
     private val pickImagesLauncher = registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
@@ -45,44 +41,22 @@ class AddPostFragment : Fragment() {
             )
 
             if (imageUris.size == 1) {
-                imageUris.add(uri)  // הפלוס ב-0, התמונה ב-1
+                imageUris.add(uri)
             } else if (currentSelectedPosition == 0) {
-                // אם בחרת את הפלוס - הוסף תמונה אחרי הפלוס
                 imageUris.add(1, uri)
             } else {
-                // החלף תמונה קיימת במקום שנבחר (אם רצית את זה)
                 imageUris[currentSelectedPosition] = uri
             }
 
-            // אם יש יותר מ-9 תמונות, הסר את הפלוס
             if (imageUris.size > 10) {
-                imageUris.removeAt(0) // הסר פלוס אם עברנו 9 תמונות
+                imageUris.removeAt(0)
             }
 
             viewModel.setImageUris(imageUris.filterNotNull())
 
-
             imagesAdapter.notifyDataSetChanged()
         }
     }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        viewModel.imageUris.observe(viewLifecycleOwner) { uris ->
-            imageUris.clear()
-            if (uris.isNullOrEmpty()) {
-                imageUris.add(null)
-            } else {
-                imageUris.add(null)
-                imageUris.addAll(uris.toMutableList())
-
-            }
-
-            imagesAdapter.notifyDataSetChanged()
-        }
-    }
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -90,8 +64,12 @@ class AddPostFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = AddPostLayoutBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        // מילוי הספינר של המדינות
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         val countries = mutableListOf(getString(R.string.select_location)) + Locale.getAvailableLocales()
             .map { Locale("", it.country).displayCountry }
             .filter { it.isNotBlank() }
@@ -102,17 +80,15 @@ class AddPostFragment : Fragment() {
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerCountriesAddPost.adapter = spinnerAdapter
 
-        for (i in 0 until spinnerAdapter.count) {
-            val countryName = spinnerAdapter.getItem(i)
-        }
+//        for (i in 0 until spinnerAdapter.count) {
+//            val countryName = spinnerAdapter.getItem(i)
+//        }
 
-        // חזרה לפרופיל
         binding.btnBackFromAddPost.setOnClickListener {
             viewModel.setImageUris(emptyList())
             findNavController().navigate(R.id.action_addPostFragment_to_profileFragment)
         }
 
-        // שמירת הפוסט
         binding.btnAddPost.setOnClickListener {
             val selectedLocation = binding.spinnerCountriesAddPost.selectedItem.toString()
             val currentDescription = binding.editTxtPostDescription.text.toString()
@@ -145,15 +121,12 @@ class AddPostFragment : Fragment() {
             )
 
             viewModel.addPost(post)
-
-
             viewModel.setImageUris(emptyList())
             findNavController().navigate(R.id.action_addPostFragment_to_profileFragment)
         }
 
         imagesAdapter = ImagesAdapter(imageUris) { position ->
             currentSelectedPosition = position
-            // פתח גלריה לבחירת תמונה אחת
             pickImagesLauncher.launch(arrayOf("image/*"))
         }
 
@@ -162,7 +135,17 @@ class AddPostFragment : Fragment() {
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
 
-        return binding.root
-    }
+        viewModel.imageUris.observe(viewLifecycleOwner) { uris ->
+            imageUris.clear()
+            if (uris.isNullOrEmpty()) {
+                imageUris.add(null)
+            } else {
+                imageUris.add(null)
+                imageUris.addAll(uris.toMutableList())
 
+            }
+            imagesAdapter.notifyDataSetChanged()
+        }
+
+    }
 }

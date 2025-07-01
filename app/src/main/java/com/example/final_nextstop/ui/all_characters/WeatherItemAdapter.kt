@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.final_nextstop.R
 import com.example.final_nextstop.data.model.SearchType
 import com.example.final_nextstop.data.model.WeatherItem
 import com.example.final_nextstop.databinding.WeatherItemLayoutBinding
@@ -27,7 +28,6 @@ class WeatherItemAdapter : RecyclerView.Adapter<WeatherItemAdapter.WeatherViewHo
 
             binding.textViewCountryName.apply {
                 if (Locale.getDefault().language == "iw") {
-                    // המכשיר מוגדר על עברית
                     text = CapitalResolver.getCountryFromCapitalInHebrew(item.cityName) ?: item.cityName
                 }
                 else if (Locale.getDefault().language == "en"){
@@ -43,7 +43,7 @@ class WeatherItemAdapter : RecyclerView.Adapter<WeatherItemAdapter.WeatherViewHo
 
 
                 binding.textViewTemperature.apply {
-                    text = "Temperature: ${item.temperature}°C"
+                    text = context.getString(R.string.temperature_c, item.temperature)
                 }
             }
             else if (item.searchType == SearchType.FORECAST_BY_COUNTRY) {

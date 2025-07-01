@@ -26,7 +26,7 @@ import java.util.Locale
 @AndroidEntryPoint
 class EditDescriptionFragment : Fragment() {
     private var _binding : EditDescriptionLayoutBinding by autoCleared()
-    val viewModel : PostsViewModel by activityViewModels()
+    private val viewModel : PostsViewModel by activityViewModels()
     private val binding get() = _binding
     private var editableImages = mutableListOf<String>()
     private lateinit var editImagesAdapter: EditableImagesAdapter
@@ -81,7 +81,8 @@ class EditDescriptionFragment : Fragment() {
         }
         binding.btnAddImage.setOnClickListener {
             if (editableImages.size >= 10) {
-                Toast.makeText(requireContext(), "Maximum 10 images", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(),
+                    getString(R.string.maximum_10_images), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             pickImageLauncher.launch(arrayOf("image/*"))
@@ -158,8 +159,6 @@ class EditDescriptionFragment : Fragment() {
                     Date(it.date)
                 )
 
-
-
             editableImages.clear()
             editableImages.addAll(it.images.orEmpty())
 
@@ -200,5 +199,4 @@ class EditDescriptionFragment : Fragment() {
 
         }
     }
-
 }
